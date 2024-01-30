@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    background-color: aqua;
+
+    .logo {
+        .textWrapper {
+            color: #ffffff;
+            font-weight: 600;
+        }
+    
+        .span {
+            color: #9054ff;
+            font-family: "Inter-Black", Helvetica;
+            font-weight: 900;
+        }
+    }
+
+    .easyMirror {
+        color: transparent;
+        font-family: "Inter-SemiBold", Helvetica;
+        font-size: 20px;
+        font-weight: 400;
+        left: 21px;
+        letter-spacing: 0;
+        line-height: normal;
+        position: absolute;
+        top: 12px;
+        white-space: nowrap;
+    }
+}
