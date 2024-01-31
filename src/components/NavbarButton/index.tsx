@@ -12,8 +12,8 @@ export const SideNavigationButton = (props:NavigationButtonProps) => (
         <NavLink 
         to={props.to} 
         tabIndex={-1}
-        style={{ textDecoration: 'none' }}
-        className={({ isActive }) => isActive ? styles.active : ""}
+        className={({ isActive }) => isActive ? styles.active : styles.notActive}
+        style={{ textDecoration: 'none', textDecorationLine: "none" }}
         >
             {props.title}
         </NavLink>
