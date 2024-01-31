@@ -17,9 +17,6 @@ export const Navbar = () => {
                 <SideNavigationButton title="Home" to="/home"/>
                 <SideNavigationButton title="History" to="/history"/>
                 <SideNavigationButton title="Account" to="/account"/>
-                {/* TODO Home page button */}
-                {/* TODO History page button */}
-                {/* TODO Account page button */}
             </div>
 
         </nav>
