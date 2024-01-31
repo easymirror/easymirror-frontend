@@ -1,0 +1,81 @@
+.navbar {
+    display: flex;
+    background-color: #9054ff29;
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        color: transparent;
+        font-family: "Inter-SemiBold", Helvetica;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: normal;
+        white-space: nowrap;
+        margin-left: 25px;
+
+        .textWrapper {
+            color: #ffffff;
+            font-weight: 600;
+        }
+    
+        .span {
+            color: #9054ff;
+            font-family: "Inter-Black", Helvetica;
+            font-weight: 900;
+        }
+    }
+
+    .sectionMenu {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .menuBtn {
+        font: 30px;
+        font-weight: bolder;
+        cursor: pointer;
+        display: none;
+    }
+
+    // Response navbar css
+    @media screen and (max-width: 600px) {
+        .menuBtn { 
+            display: flex;
+            color: #9054ff;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .closeBtn {
+            display: flex;
+            justify-content: center;
+        }
+
+        .sectionMenu{
+            display: none;
+        }
+        
+        .sideNav {
+            height: 100%;
+            position: fixed;
+            // background-color: yellow;
+            background-image: url("../../assets/background.svg");
+            overflow: hidden;
+            transition: 1s ease-in;
+            padding-top: 25px;
+        }
+
+        .sideNav a{
+            padding: 8px 8px 8px 40px;
+            display: block;
+            transition: 1s;
+        }
+
+        .logo {
+            margin-left: 0px;
+        }
+    }
+}

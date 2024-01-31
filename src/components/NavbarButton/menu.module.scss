@@ -1,0 +1,46 @@
+.item {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+
+    .active {
+        color: #9054ff;
+        position: relative;
+    }
+
+    // CSS for the underline when active
+    .active:before {
+        position: absolute;
+        left: 75%;
+        top: 1.2em;
+        height: 0;
+        width: 15px;
+        content: "";
+        border-radius: 100px;
+        border-top: 6px solid #9054ff;
+        transform: translateX(-25px); /* Move the element left by half of its width */
+    }
+
+    // CSS for the underline when active on mobile devices
+    @media screen and (max-width: 600px) {
+        .active:before {
+            position: absolute;
+            left: 75%;
+            top: 1.5em;
+            height: 0;
+            width: 15px;
+            content: "";
+            border-radius: 100px;
+            border-top: 6px solid 9054ff;
+            transform: translateX(-25px); /* Move the element left by half of its width */
+        }
+    }
+
+    .notActive {
+        color: white;
+    }
+
+}
