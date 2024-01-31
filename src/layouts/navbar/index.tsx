@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import style from "./navbar.module.scss"
 import { SideNavigationButton } from "../../components/NavbarButton";
 
