@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
 import style from "./navbar.module.scss"
+import { SideNavigationButton } from "../../components/NavbarButton";
 
 export const Navbar = () => {
     return (
-        <div className={style.navbar}>
+        <nav className={style.navbar}>
             {/* EasyMirror Logo */}
             <div className={style.logo}>
                 <p>
@@ -13,9 +14,15 @@ export const Navbar = () => {
                 </p>
             </div>
 
-            {/* TODO Home page button */}
-            {/* TODO History page button */}
-            {/* TODO Account page button */}
-        </div>
+            <div className={style.sectionMenu}>
+                <SideNavigationButton title="Home" to="/home"/>
+                <SideNavigationButton title="History" to="/history"/>
+                <SideNavigationButton title="Account" to="/account"/>
+                {/* TODO Home page button */}
+                {/* TODO History page button */}
+                {/* TODO Account page button */}
+            </div>
+
+        </nav>
     )
 }
