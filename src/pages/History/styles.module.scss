@@ -43,3 +43,29 @@
         opacity: 0.16;
     }
 }
+
+.statusBox {
+    display: flex;
+    justify-content: center;
+    width: 79px;
+    height: 18px;
+    border-radius: 6px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}    
+
+.complete {
+    background-color: #58ff69b5;
+}
+
+.failed {
+    background-color: #F00;
+}
+
+.inProgress {
+    background-color: #37F;
+}
