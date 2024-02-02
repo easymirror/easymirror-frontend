@@ -1,7 +1,7 @@
-import { History } from "./history"
+import { HistoryItem } from "./historyItem"
 import style from "./styles.module.scss"
 interface HistoryContentProps {
-    items: History[]
+    items: HistoryItem[]
 }
 
 export const HistoryContent = (props:HistoryContentProps) => {

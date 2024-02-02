@@ -3,7 +3,7 @@ import { PageLayout } from "../../layouts/page-layout"
 import style from "./styles.module.scss"
 import { Table } from "../../components/ResizeableTable";
 import { HistoryContent } from "./historyContent";
-import { Convert } from "./history";
+import { Convert } from "./historyItem";
 
 const tableHeaders = [
     // "Items",
@@ -20,7 +20,7 @@ export const HistoryPage = () => {
   const json = `{"id":"id","nickname":"name","link":"link","date":"2024-02-01T19:14:32+00:00","duration":"duration","status":"complete","additionalInfo":[""]}`
   let users = []
   try {
-    const user = Convert.toHistory(json);
+    const user = Convert.toHistoryItem(json);
 
     for (let index = 0; index < 100; index++) {
       users.push(user)

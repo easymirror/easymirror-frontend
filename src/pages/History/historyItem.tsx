@@ -1,13 +1,13 @@
 // To parse this data:
 //
-//   import { Convert, History } from "./file";
+//   import { Convert, HistoryItem } from "./file";
 //
-//   const history = Convert.toHistory(json);
+//   const history = Convert.toHistoryItem(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface History {
+export interface HistoryItem {
     id:             string;
     nickname:       string;
     link:           string;
@@ -20,12 +20,12 @@ export interface History {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toHistory(json: string): History {
-        return cast(JSON.parse(json), r("History"));
+    public static toHistoryItem(json: string): HistoryItem {
+        return cast(JSON.parse(json), r("HistoryItem"));
     }
 
-    public static historyToJson(value: History): string {
-        return JSON.stringify(uncast(value, r("History")), null, 2);
+    public static historyToJson(value: HistoryItem): string {
+        return JSON.stringify(uncast(value, r("HistoryItem")), null, 2);
     }
 }
 
@@ -182,7 +182,7 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "History": o([
+    "HistoryItem": o([
         { json: "id", js: "id", typ: "" },
         { json: "nickname", js: "nickname", typ: "" },
         { json: "link", js: "link", typ: "" },
