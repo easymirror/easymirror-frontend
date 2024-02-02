@@ -13,7 +13,7 @@ export const HomePage = () => {
                         <div className={style.slogan1}>The <span>best</span> way to mirror files.</div>
                         <div className={style.slogan2}>Mirror files in seconds with an auto-generated link.</div>
                     </div>
-                    <div className={style.intructions1}>Select or drag and drop files to start</div>
+                    {/* <div className={style.intructions1}>Select or drag and drop files to start</div> */}
                 </div>
             </div>
         </PageLayout>
