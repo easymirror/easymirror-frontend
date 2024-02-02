@@ -6,9 +6,15 @@ export const HomePage = () => {
         <PageLayout title="EasyMirror" description="File sharing made easy!">
             <div className={style.homePage}>
                 {/* TODO add drag & drop functionality */}
-                {/* TODO add btn to upload files */}
-                {/* TODO Add Slogan 1 */}
-                {/* TODO Add instructions */}
+                <button className={style.selectBtn}>Select File(s)</button>
+
+                <div className={style.textContainer}>
+                    <div className={style.slogans}>
+                        <div className={style.slogan1}>The <span>best</span> way to mirror files.</div>
+                        <div className={style.slogan2}>Mirror files in seconds with an auto-generated link.</div>
+                    </div>
+                    <div className={style.intructions1}>Select or drag and drop files to start</div>
+                </div>
             </div>
         </PageLayout>
     )
