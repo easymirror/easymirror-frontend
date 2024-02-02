@@ -4,6 +4,7 @@ import { Navbar } from '../navbar';
 import { Route, Routes } from 'react-router';
 import { AccountPage } from '../../pages/Account';
 import { HistoryPage } from '../../pages/History';
+import "./styles.css"
 
 function App() {
   return (
