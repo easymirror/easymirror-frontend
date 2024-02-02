@@ -6,14 +6,14 @@ import { HistoryContent } from "./historyContent";
 import { Convert } from "./historyItem";
 
 const tableHeaders = [
-    // "Items",
-    <input type="checkbox"/>,
+    <input type="checkbox"/>, // TODO make this button functional
     "ID",
     "Name",
     "Link",
     "Date",
     "Duration",
-    "Status"
+    "Status",
+    "", // Leave blank - will be used for buttons
 ];
 
 export const HistoryPage = () => {

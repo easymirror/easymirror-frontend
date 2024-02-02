@@ -1,5 +1,8 @@
 import { HistoryItem } from "./historyItem"
 import style from "./styles.module.scss"
+import InfoIcon from '@mui/icons-material/Info';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 interface HistoryContentProps {
     items: HistoryItem[]
 }
@@ -20,9 +23,12 @@ export const HistoryContent = (props:HistoryContentProps) => {
                   }>
                 {item.status}
                 </div></td>
-
-                {/* TODO add info icon */}
-                {/* TODO add trash icon */}
+                <td>
+                  <div className={style.itemActions}>
+                    <InfoIcon/>
+                    <DeleteIcon/>
+                  </div>
+                </td>
             </tr>
         ))}
       </tbody>
