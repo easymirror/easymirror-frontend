@@ -3,6 +3,8 @@ import style from "./app.module.scss"
 import { Navbar } from '../navbar';
 import { Route, Routes } from 'react-router';
 import { AccountPage } from '../../pages/Account';
+import { HistoryPage } from '../../pages/History';
+import "./styles.css"
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       <div className="page-container">
           <Routes>
             <Route path="/account"element={<AccountPage/>} />
+            <Route path="/history"element={<HistoryPage/>} />
           </Routes>
       </div>
     </div>
