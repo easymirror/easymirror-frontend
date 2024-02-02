@@ -19,9 +19,11 @@ export const HistoryContent = (props:HistoryContentProps) => {
                 <td>
                   <div className={style.linkContainer}>
                     <span>{item.link}</span>
-                    <div className={style.copy} onClick={() => {navigator.clipboard.writeText(item.link)}}>
-                      <ContentCopyIcon/>
-                    </div>
+                    {item.link && (
+                      <div className={style.copy} onClick={() => {navigator.clipboard.writeText(item.link)}}>
+                        <ContentCopyIcon/>
+                      </div>
+                    )}
                   </div>
                 </td>
                 <td><span>{item.date.toLocaleString()}</span></td>
