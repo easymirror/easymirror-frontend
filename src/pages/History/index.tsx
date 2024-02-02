@@ -4,9 +4,10 @@ import style from "./styles.module.scss"
 import { Table } from "../../components/ResizeableTable";
 import { HistoryContent } from "./historyContent";
 import { Convert } from "./historyItem";
+import { Checkbox } from "../../components/Checkbox";
 
 const tableHeaders = [
-    <input type="checkbox"/>, // TODO make this button functional
+    <Checkbox/>, // TODO make this button functional
     "ID",
     "Name",
     "Link",

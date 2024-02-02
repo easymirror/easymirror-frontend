@@ -3,6 +3,7 @@ import style from "./styles.module.scss"
 import InfoIcon from '@mui/icons-material/Info';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { Checkbox } from "../../components/Checkbox";
 
 interface HistoryContentProps {
     items: HistoryItem[]
@@ -13,7 +14,7 @@ export const HistoryContent = (props:HistoryContentProps) => {
       <tbody>
         {props.items.map((item, index) => (
             <tr key={index}>
-                <td><span>{<input type="checkbox"/>}</span></td> 
+                <td><span>{<Checkbox/>}</span></td> 
                 <td><span>{item.id}</span></td>
                 <td><span>{item.nickname}</span></td>
                 <td>
