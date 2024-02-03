@@ -12,6 +12,7 @@ Folder  | Description | Example
 `src/lib`  | Contains wrappers for the various different libraries you use in your project | Wrapping for `fetch()` calls
 `src/pages `  | Contains all pages, one file for each | A home page file
 `src/services `  | Contains all your code for interfacing with any external API. | File for collecting fingerprint data
+`src/utils `  | Contains all utility functions. | Formatters like converting string to type Date
 
 # Getting Started with Create React App
 
