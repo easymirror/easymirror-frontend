@@ -1,12 +1,22 @@
 import { PageLayout } from "../../layouts/page-layout"
 import style from "./style.module.scss"
+import { useState, useRef } from "react"
 
 export const HomePage = () => {
+    const inputFile = useRef<HTMLInputElement>(null);
+
+    const onSelectClick = () => {
+        // `current` points to the mounted file input element
+        if (inputFile.current === null) return
+        inputFile.current.click();
+    }
+
     return (
         <PageLayout title="EasyMirror" description="File sharing made easy!">
             <div className={style.homePage}>
                 {/* TODO add drag & drop functionality */}
-                <button className={style.selectBtn}>Select File(s)</button>
+                <button className={style.selectBtn} onClick={onSelectClick}>Select File(s)</button>
+                <input type={'file'} multiple={true} ref={inputFile} onChange={handleChangeFile} style={{display: 'none'}}/>
 
                 <div className={style.textContainer}>
                     <div className={style.slogans}>
