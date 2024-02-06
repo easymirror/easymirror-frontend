@@ -36,6 +36,13 @@
     border-radius: 10px;
     overflow: hidden;
 
+
+    .generatedLinkContainer {
+        border-radius: 58px;
+        border: 1px solid #9054FF;
+        background: rgba(144, 84, 255, 0.11);
+    }
+
     .modalHeader {
         display: flex;
         -webkit-box-align: center;
@@ -139,4 +146,21 @@
         margin-bottom: 30px;
     }
     
+}
+
+.uploadBtn {
+    cursor: pointer;
+    border-radius: 92px;
+    background: #9054FF;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 345px;
+    height: 75px;
+    flex-shrink: 0;
+    padding: 0;
+    border: none;
 }

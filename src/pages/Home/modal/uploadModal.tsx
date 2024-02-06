@@ -1,4 +1,5 @@
 import styles from "./style.module.scss"
+import { useState } from "react"
 
 interface ModalProps {
     files?: FileList
@@ -6,6 +7,8 @@ interface ModalProps {
 }
 
 export const UploadModal = (props:ModalProps) => {
+    const [showUploadBtn, updateUpdateBtn] = useState(true)
+
     // const groupNameRef = useRef<HTMLInputElement>(null);
 
     // const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
@@ -22,17 +25,10 @@ export const UploadModal = (props:ModalProps) => {
                 {/* TODO site selection section */}
                 {/* TODO settings selection */}
                 {/* TODO file display section */}
-                {/* TODO upload button */}
-                {/* TODO generated link section */}
-                
-                <div className={styles.modalHeader}>
-                    <div className={styles.url}>
-                        <div className={styles.separator}></div>New Accounts Group</div>
-                </div>
-                <div className={styles.modalBody}>
-                    <input required className={styles.proxyInput} placeholder={"Enter group name"} spellCheck={false} />
-                </div>
-                <div className={styles.modalFooter}>
+    
+                <div className="buttonSection">
+                    {showUploadBtn && <button className={styles.uploadBtn}>Upload</button>}
+                    {/* TODO generated link section */}
                 </div>
             </form>
         </div>
