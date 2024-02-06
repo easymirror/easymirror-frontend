@@ -92,7 +92,7 @@ export const Table: React.FC<TableProps> = ({ headers, minCellWidth, tableConten
   return (
     <div className="container">
       <div className="table-wrapper">
-        <table className="resizeable-table" ref={tableElement}>
+        <table className={`resizeable-table num_${headers.length}`} ref={tableElement}>
           <thead>
             <tr>
               {columns.map(({ ref, text }, i) => (

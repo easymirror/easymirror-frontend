@@ -40,15 +40,25 @@ th, td {
     border-collapse: collapse;
     width: 100%;
     display: grid;
+  }
+
+  .num_8{
     grid-template-columns:
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(125px, 1fr)
-      minmax(25px, 1fr);
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(25px, 1fr);
+  }
+
+  .num_3{
+    grid-template-columns:
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(25px, 1fr);
   }
   
   table thead,
