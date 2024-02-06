@@ -26,7 +26,7 @@ export const UploadModal = (props:ModalProps) => {
                 {/* TODO settings selection */}
                 {/* TODO file display section */}
     
-                <div className="buttonSection">
+                <div className="footerSection">
                     {showUploadBtn && <button className={styles.uploadBtn}>Upload</button>}
                     {/* TODO generated link section */}
                 </div>
