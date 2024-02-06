@@ -58,7 +58,7 @@ th, td {
     grid-template-columns:
     minmax(125px, 1fr)
     minmax(125px, 1fr)
-    minmax(25px, 1fr);
+    minmax(125px, 1fr);
   }
   
   table thead,
