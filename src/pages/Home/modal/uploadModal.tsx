@@ -17,6 +17,13 @@ export const UploadModal = (props:ModalProps) => {
         <div className={styles.ModalContainer}>
             <div className={styles.blurBackground} onClick={() =>props.onCloseModal()}></div>
             <form className={styles.modalContents}>
+
+                {/* TODO site selection section */}
+                {/* TODO settings selection */}
+                {/* TODO file display section */}
+                {/* TODO upload button */}
+                {/* TODO generated link section */}
+                
                 <div className={styles.modalHeader}>
                     <div className={styles.url}>
                         <div className={styles.separator}></div>New Accounts Group</div>
