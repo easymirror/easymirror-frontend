@@ -19,6 +19,14 @@ export const UploadModal = (props:ModalProps) => {
     //     NewAccountsGroup(props.parentID,groupNameRef.current!.value).then(() => props.onCloseModal())
     // }
 
+    const handleUpload = () => {
+        // Remove the upload button
+        updateUpdateBtn(false)
+
+        // Display container to generate link
+        // TODO Upload files
+    }
+
     return (
         <div className={styles.ModalContainer}>
             <div className={styles.blurBackground} onClick={() =>props.onCloseModal()}></div>
@@ -29,12 +37,13 @@ export const UploadModal = (props:ModalProps) => {
                 {/* TODO file display section */}
     
                 <div className={styles.footerSection}>
-                    {showUploadBtn && <button className={styles.uploadBtn}>Upload</button>}
-                    {/* TODO generated link section */}
+                    {showUploadBtn && <button className={styles.uploadBtn} onClick={handleUpload}>Upload</button>}
+                    {!showUploadBtn && (
                     <div className={styles.generatedLinkContainer}>
                         <ContentCopyIcon className={styles.icon} onClick={() => {navigator.clipboard.writeText(link)}}/>
                         <input disabled placeholder="Generated Link Will Appear Here"/>
-                  </div>
+                    </div>
+                    )}
                 </div>
             </form>
         </div>
