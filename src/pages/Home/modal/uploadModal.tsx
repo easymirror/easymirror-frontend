@@ -1,6 +1,7 @@
 import styles from "./style.module.scss"
 
 interface ModalProps {
+    files?: FileList
     onCloseModal: ()=> void
 }
 
