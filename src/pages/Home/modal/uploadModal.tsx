@@ -1,5 +1,6 @@
 import styles from "./style.module.scss"
 import { useState } from "react"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 interface ModalProps {
     files?: FileList
@@ -8,6 +9,7 @@ interface ModalProps {
 
 export const UploadModal = (props:ModalProps) => {
     const [showUploadBtn, updateUpdateBtn] = useState(true)
+    const [link, updateLink] = useState("")
 
     // const groupNameRef = useRef<HTMLInputElement>(null);
 
@@ -26,9 +28,13 @@ export const UploadModal = (props:ModalProps) => {
                 {/* TODO settings selection */}
                 {/* TODO file display section */}
     
-                <div className="footerSection">
+                <div className={styles.footerSection}>
                     {showUploadBtn && <button className={styles.uploadBtn}>Upload</button>}
                     {/* TODO generated link section */}
+                    <div className={styles.generatedLinkContainer}>
+                        <ContentCopyIcon className={styles.icon} onClick={() => {navigator.clipboard.writeText(link)}}/>
+                        <input disabled placeholder="Generated Link Will Appear Here"/>
+                  </div>
                 </div>
             </form>
         </div>
