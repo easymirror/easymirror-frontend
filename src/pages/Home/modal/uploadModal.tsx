@@ -1,6 +1,14 @@
 import styles from "./style.module.scss"
 import { useState } from "react"
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { Table } from "../../../components/ResizeableTable";
+import { UploadContent } from "./uploadItems";
+
+const tableHeaders = [
+    "File",
+    "Size",
+    "Status"
+]
 
 interface ModalProps {
     files?: FileList
@@ -24,7 +32,7 @@ export const UploadModal = (props:ModalProps) => {
         updateUpdateBtn(false)
 
         // Display container to generate link
-        // TODO Upload files
+        // TODO Upload files to API
     }
 
     return (
@@ -35,6 +43,13 @@ export const UploadModal = (props:ModalProps) => {
                 {/* TODO site selection section */}
                 {/* TODO settings selection */}
                 {/* TODO file display section */}
+                <div className="table">
+                    <Table
+                        headers={tableHeaders}
+                        minCellWidth={120}
+                        tableContent={<UploadContent files={props.files} />}
+                    />
+                </div>
     
                 <div className={styles.footerSection}>
                     {showUploadBtn && <button className={styles.uploadBtn} onClick={handleUpload}>Upload</button>}
