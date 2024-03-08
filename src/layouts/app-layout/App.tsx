@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from "./app.module.scss"
 import { Navbar } from '../navbar';
 import { Route, Routes } from 'react-router';
@@ -11,7 +11,7 @@ import {useCookies} from 'react-cookie';
 
 function App() {
   const [cookieOpen, setCookieOpen] = useState(true);
-  const [, setCookie, ] = useCookies(['cookie-consent']);
+  const [cookies, setCookie, ] = useCookies(['cookie-consent']);
 
   const acceptConsent = () => {
     // Create the expiration
@@ -20,11 +20,18 @@ function App() {
     d.setTime(d.getTime() + (hours*60*60*1000));
 
     // Set cookie
-    setCookie("cookie-consent", true, {expires: d, httpOnly: true})
+    setCookie("cookie-consent", true, {expires: d})
 
     // Close the modal
     setCookieOpen(false)
   }
+
+  useEffect(() => {
+    // Check if user has accepted cookies
+    if (cookies['cookie-consent']){
+      setCookieOpen(false)
+    }
+  }, [cookies]);
 
   return (
     <div className={style.app}>
