@@ -3,17 +3,22 @@ import style from "./style.module.scss"
 import { useState, useRef } from "react"
 import { convertBytes } from "../../utils/convertBytes"
 import { UploadModal } from "./modal/uploadModal"
+import axios from "axios"
 
 export const HomePage = () => {
     const inputFile = useRef<HTMLInputElement>(null);
-    const [files, setFiles] = useState<FileList | null> (null);
+    const [files, setFiles] = useState<any> ([]);
     const [showModal, updateShowModal] = useState(false)
+    const [progress, setProgress] = useState(0)
 
     const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.currentTarget.files
-        if (!files)  return
-        setFiles(files)
-        updateShowModal((prev) => !prev)
+        const f = e.currentTarget.files
+        if (!f)  return
+
+        const newData= [ ...files, ...Array.from(f) ];
+        
+        setFiles(newData);
+        updateShowModal(true)
     }
 
     const onSelectClick = () => {
@@ -24,7 +29,7 @@ export const HomePage = () => {
 
     return (
         <PageLayout title="EasyMirror" description="File sharing made easy!">
-            {showModal && <UploadModal files={files!} onCloseModal={() => {}}/>}
+            { showModal && <UploadModal files={files!} onCloseModal={() => {}}/> }
             <div className={style.homePage}>
                 {/* TODO add drag & drop functionality */}
                 <button className={style.selectBtn} onClick={onSelectClick}>Select File(s)</button>
