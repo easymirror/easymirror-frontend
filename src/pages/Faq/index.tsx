@@ -8,7 +8,7 @@ import { FaqItem } from "./faqItem";
 export const FaqPage = () => {
 
     return (
-        <PageLayout title="History" description="Previous Uploads">
+        <PageLayout title="FAQ" description="Easy Mirror">
             <div className={style.faqPage}>
                 <div className={style.header}>Frequently Asked Questions</div>
                 <div className={style.backgroundCard}>
