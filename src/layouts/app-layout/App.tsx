@@ -6,6 +6,7 @@ import { HomePage } from '../../pages/Home';
 import { AccountPage } from '../../pages/Account';
 import { HistoryPage } from '../../pages/History';
 import "./styles.css"
+import { FaqPage } from '../../pages/Faq';
 
 function App() {
   const [cookieOpen, setCookieOpen] = useState(true);
@@ -19,6 +20,7 @@ function App() {
             <Route path="/home"element={<HomePage/>} />
             <Route path="/account"element={<AccountPage/>} />
             <Route path="/history"element={<HistoryPage/>} />
+            <Route path="/faq"element={<FaqPage/>} />
           </Routes>
           {cookieOpen && <div className={style.cookie}>
             <h2>We use cookie</h2>
