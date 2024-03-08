@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <SideNavigationButton title="Home" to="/home"/>
                     <SideNavigationButton title="History" to="/history"/>
                     <SideNavigationButton title="Account" to="/account"/>
-                    <SideNavigationButton title="Faq" to="/faq"/>
+                    <SideNavigationButton title="FAQ" to="/faq"/>
                 </div> 
             )}
 
@@ -33,7 +33,7 @@ export const Navbar = () => {
                 <SideNavigationButton title="Home" to="/home"/>
                 <SideNavigationButton title="History" to="/history"/>
                 <SideNavigationButton title="Account" to="/account"/>
-                <SideNavigationButton title="Faq" to="/faq"/>
+                <SideNavigationButton title="FAQ" to="/faq"/>
             </div>
 
         </nav>
