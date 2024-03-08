@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from "./app.module.scss"
 import { Navbar } from '../navbar';
 import { Route, Routes } from 'react-router';
@@ -8,6 +8,8 @@ import { HistoryPage } from '../../pages/History';
 import "./styles.css"
 
 function App() {
+  const [cookieOpen, setCookieOpen] = useState(true);
+
   return (
     <div className={style.app}>
       <Navbar/>
@@ -18,7 +20,16 @@ function App() {
             <Route path="/account"element={<AccountPage/>} />
             <Route path="/history"element={<HistoryPage/>} />
           </Routes>
+          {cookieOpen && <div className={style.cookie}>
+            <h2>We use cookie</h2>
+            <p>This website collects cookies to deliver better user experience</p>
+            <button onClick={() => setCookieOpen(false)}>Accept</button>
+            <button onClick={() => setCookieOpen(false)}>Close</button>
+          </div>
+          }
+          
       </div>
+     
     </div>
   );
 }
