@@ -4,6 +4,8 @@ import './index.css';
 import App from './layouts/app-layout/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from './context/authProvider';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <CookiesProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </CookiesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
