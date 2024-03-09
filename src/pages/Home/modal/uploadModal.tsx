@@ -20,15 +20,6 @@ export const UploadModal = (props:ModalProps) => {
     const [showUploadBtn, updateUpdateBtn] = useState(true)
     const [link, updateLink] = useState("")
     const [progress, setProgress] = useState<Map<number, number>>(new Map());
-
-    // const groupNameRef = useRef<HTMLInputElement>(null);
-
-    // const handleSave = (event: React.FormEvent<HTMLFormElement>) => {
-    //     // Save to backend then close modal
-    //     event.preventDefault()
-    //     NewAccountsGroup(props.parentID,groupNameRef.current!.value).then(() => props.onCloseModal())
-    // }
-
     const handleUpload = () => {
         // Remove the upload button
         updateUpdateBtn(false)
@@ -63,7 +54,7 @@ export const UploadModal = (props:ModalProps) => {
 
     return (
         <div className={styles.ModalContainer}>
-            <div className={styles.blurBackground} onClick={() =>props.onCloseModal()}></div>
+            <div className={styles.blurBackground} onClick={props.onCloseModal}></div>
             <form className={styles.modalContents}>
 
                 {/* TODO site selection section */}

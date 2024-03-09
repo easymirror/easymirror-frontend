@@ -29,7 +29,7 @@ export const HomePage = () => {
 
     return (
         <PageLayout title="EasyMirror" description="File sharing made easy!">
-            { showModal && <UploadModal files={files!} onCloseModal={() => {}}/> }
+            { showModal && <UploadModal files={files!} onCloseModal={() => {updateShowModal(false); setFiles([])}}/> }
             <div className={style.homePage}>
                 {/* TODO add drag & drop functionality */}
                 <button className={style.selectBtn} onClick={onSelectClick}>Select File(s)</button>
