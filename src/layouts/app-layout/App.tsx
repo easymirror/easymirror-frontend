@@ -8,11 +8,20 @@ import { HistoryPage } from '../../pages/History';
 import "./styles.css"
 import { FaqPage } from '../../pages/Faq';
 import {useCookies} from 'react-cookie';
+import useAuth from '../../hooks/useAuth';
+import axios from '../../lib/axios';
+
+const API_PATH = "/api/v1/auth/init"
+
+interface JWTResponse{
+  access_token: string
+  success: boolean
+}
 
 function App() {
   const [cookieOpen, setCookieOpen] = useState(true);
-  const [cookies, setCookie, ] = useCookies(['cookie-consent']);
-
+  const [cookies, setCookie] = useCookies(['cookie-consent']);
+  const { setAuth } = useAuth();
   const acceptConsent = () => {
     // Create the expiration
     const hours = 730 // one month
@@ -27,11 +36,29 @@ function App() {
   }
 
   useEffect(() => {
+    const getJWT = async() => {
+      try {
+        const response = await axios.get(API_PATH, {withCredentials: true});
+        let data = response?.data as JWTResponse
+        if (!data.success) return
+        localStorage.setItem("access_token",data.access_token)
+        setAuth(data.access_token)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
     // Check if user has accepted cookies
     if (cookies['cookie-consent']){
       setCookieOpen(false)
     }
-  }, [cookies]);
+
+    // Check if access token is present. If not, get a new one.
+    if (!localStorage.getItem("access_token")){
+      getJWT()
+    }
+
+  }, [cookies, setAuth]);
 
   return (
     <div className={style.app}>
