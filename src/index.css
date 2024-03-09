@@ -7,6 +7,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --main-purple: #9054FF;
+  --white: #FFFFFF;
+  --python-green: #58FF69;
+  --red: #F00;
+  --shark-blue: #37F;
 }
 
 code {
