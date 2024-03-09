@@ -7,7 +7,7 @@
     white-space: nowrap;
 
     .active {
-        color: #9054ff;
+        color: var(--main-purple);
         position: relative;
     }
 
@@ -20,7 +20,7 @@
         width: 15px;
         content: "";
         border-radius: 100px;
-        border-top: 6px solid #9054ff;
+        border-top: 6px solid var(--main-purple);
         transform: translateX(-25px); /* Move the element left by half of its width */
     }
 

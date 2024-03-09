@@ -44,7 +44,7 @@
 
     .generatedLinkContainer {
         border-radius: 58px;
-        border: 1px solid #9054FF;
+        border: 1px solid var(--main-purple);
         background: rgba(144, 84, 255, 0.11);
         width: 80%;
         height: 50px;
@@ -56,11 +56,11 @@
             top: 10px;
             right: 20px;
             cursor: pointer;
-            color: #FFF;
+            color: var(--white);
         }
 
         input:disabled{ 
-            color: #FFF;
+            color: var(--white);
             font-family: Inter;
             font-size: 16px;
             font-style: normal;
@@ -183,8 +183,8 @@
 .uploadBtn {
     cursor: pointer;
     border-radius: 92px;
-    background: #9054FF;
-    color: #FFF;
+    background: var(--main-purple);
+    color: var(--white);
     font-family: Inter;
     font-size: 32px;
     font-style: normal;

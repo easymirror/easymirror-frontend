@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    background-color: #9054ff29;
+    background-color: var(--main-bg-navbar);
 
     .logo {
         display: flex;
@@ -15,12 +15,12 @@
         margin-left: 25px;
 
         .textWrapper {
-            color: #ffffff;
+            color: var(--white);
             font-weight: 600;
         }
     
         .span {
-            color: #9054ff;
+            color: var(--main-purple);
             font-family: "Inter-Black", Helvetica;
             font-weight: 900;
         }
@@ -44,7 +44,7 @@
     @media screen and (max-width: 600px) {
         .menuBtn { 
             display: flex;
-            color: #9054ff;
+            color: var(--main-purple);
             align-items: center;
             margin: 10px;
         }

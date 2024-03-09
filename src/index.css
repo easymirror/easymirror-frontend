@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --main-purple: #9054FF;
+  --main-bg-navbar: #9054ff29;
   --white: #FFFFFF;
   --python-green: #58FF69;
   --red: #F00;
