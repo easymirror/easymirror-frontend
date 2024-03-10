@@ -89,7 +89,6 @@ export const UploadModal = (props:ModalProps) => {
 
                 {/* TODO site selection section */}
                 {/* TODO settings selection */}
-                {/* TODO file display section */}
                 <div className="table">
                     <Table
                         headers={tableHeaders}
