@@ -3,7 +3,8 @@ import { useState } from "react"
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Table } from "../../../components/ResizeableTable";
 import { UploadContent } from "./uploadItems";
-import axios from "axios";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import { v4 as uuidv4 } from "uuid";
 
 const tableHeaders = [
     "File",
@@ -16,40 +17,77 @@ interface ModalProps {
     onCloseModal: ()=> void,
 }
 
+interface PresignResponse {
+    success: boolean
+    mirror_id: string
+    upload: Upload
+}
+  
+interface Upload {
+    uri: string
+    valid_until: string
+}  
+
 export const UploadModal = (props:ModalProps) => {
     const [showUploadBtn, updateUpdateBtn] = useState(true)
     const [link, updateLink] = useState("")
     const [progress, setProgress] = useState<Map<number, number>>(new Map());
-    const handleUpload = () => {
+    const axiosPrivate = useAxiosPrivate()
+    const getPresign = async (id:string,filename:string)=>{
+        try {
+            const res = await axiosPrivate.get("/api/v1/mirror", {params: {
+                n: filename, // Name of the file
+                id: id // Mirror ID
+            }})
+            let response = res.data as PresignResponse
+            if (!response.success) return
+            return response.upload.uri
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const handleUpload = async () => {
         // Remove the upload button
         updateUpdateBtn(false)
 
-        console.log(props.files);
-        props.files?.forEach((file: File, index: number) => {
-            const formData = new FormData();
-            formData.append("file", file);
+        // Generate a UUID
+        const mirrorID = uuidv4()
+
+        // TODO: For each file:
+        for (let index = 0; index < props.files.length; index++) {
+            const file: File = props.files[index];
+            // Get Presign URL
+            const presign = await getPresign(mirrorID,file.name)
+
+            // TODO: Upload to presign URL
+            // TODO Upload files to API
+        }
+
+
+        // console.log(props.files);
+        // props.files?.forEach((file: File, index: number) => {
+        //     const formData = new FormData();
+        //     formData.append("file", file);
     
-            axios.post('http://localhost:8081/upload_file', formData, {
-                headers:{
-                    "Content-Type": "multipart/form-data",
-                },
-                onUploadProgress: (e) => {
-                    const percentCompleted = Math.round(
-                        (e.loaded * 100) / e.total!
-                      );
+        //     axios.post('http://localhost:8081/upload_file', formData, {
+        //         headers:{
+        //             "Content-Type": "multipart/form-data",
+        //         },
+        //         onUploadProgress: (e) => {
+        //             const percentCompleted = Math.round(
+        //                 (e.loaded * 100) / e.total!
+        //               );
 
-                    progress.set(index, percentCompleted);
+        //             progress.set(index, percentCompleted);
 
-                    setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
+        //             setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
 
-                    console.log(percentCompleted);
-                }
-            })
+        //             console.log(percentCompleted);
+        //         }
+        //     })
     
-        })
+        // })
        
-        // Display container to generate link
-        // TODO Upload files to API
     }
 
     return (
