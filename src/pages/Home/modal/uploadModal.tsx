@@ -5,6 +5,7 @@ import { Table } from "../../../components/ResizeableTable";
 import { UploadContent } from "./uploadItems";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const tableHeaders = [
     "File",
@@ -46,6 +47,23 @@ export const UploadModal = (props:ModalProps) => {
             console.error(error)
         }
     }
+    const uploadToPresign = async (uri:string ,file: File, index:number) => {
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            axios.put(uri, formData, {
+                headers:{"Content-Type": "multipart/form-data"},
+                onUploadProgress: (e) => {
+                    const percentCompleted = Math.round((e.loaded * 100) / e.total!);
+                    progress.set(index, percentCompleted);
+                    setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
+                    console.log(percentCompleted);
+                }
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
     const handleUpload = async () => {
         // Remove the upload button
         updateUpdateBtn(false)
@@ -60,34 +78,8 @@ export const UploadModal = (props:ModalProps) => {
             const presign = await getPresign(mirrorID,file.name)
 
             // TODO: Upload to presign URL
-            // TODO Upload files to API
+            uploadToPresign(presign,file, index)
         }
-
-
-        // console.log(props.files);
-        // props.files?.forEach((file: File, index: number) => {
-        //     const formData = new FormData();
-        //     formData.append("file", file);
-    
-        //     axios.post('http://localhost:8081/upload_file', formData, {
-        //         headers:{
-        //             "Content-Type": "multipart/form-data",
-        //         },
-        //         onUploadProgress: (e) => {
-        //             const percentCompleted = Math.round(
-        //                 (e.loaded * 100) / e.total!
-        //               );
-
-        //             progress.set(index, percentCompleted);
-
-        //             setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
-
-        //             console.log(percentCompleted);
-        //         }
-        //     })
-    
-        // })
-       
     }
 
     return (
