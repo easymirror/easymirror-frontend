@@ -34,56 +34,78 @@ export const UploadModal = (props:ModalProps) => {
     const [link, updateLink] = useState("")
     const [progress, setProgress] = useState<Map<number, number>>(new Map());
     const axiosPrivate = useAxiosPrivate()
-    const getPresign = async (id:string,filename:string)=>{
+    const getPresign = async (id: string, filename: string): Promise<string | undefined> => {
         try {
-            const res = await axiosPrivate.get("/api/v1/mirror", {params: {
-                n: filename, // Name of the file
-                id: id // Mirror ID
-            }})
-            let response = res.data as PresignResponse
-            if (!response.success) return
-            return response.upload.uri
+            const res = await axiosPrivate.get("/api/v1/mirror", {
+                params: {
+                    n: filename, // Name of the file
+                    id: id // Mirror ID
+                }
+            });
+            let response = res.data as PresignResponse;
+            if (!response.success) return;
+            return response.upload.uri;
         } catch (error) {
-            console.error(error)
+            console.error(error);
+            throw error; // Propagate error
         }
-    }
-    const uploadToPresign = async (uri:string ,file: File, index:number) => {
-        try {  
-            axios.put(uri, file, {
+    };
+    const uploadToPresign = async (uri: string, file: File, index: number): Promise<void> => {
+        try {
+            await axios.put(uri, file, {
                 onUploadProgress: (e) => {
                     const percentCompleted = Math.round((e.loaded * 100) / e.total!);
                     progress.set(index, percentCompleted);
                     setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
-                    console.log(percentCompleted);
                 },
-                headers: {'Content-Type': file.type}
-            }).then(async res => {
-                // callback({res, key})
-            })
-            .catch(err => {
-                console.error(err);
-            })
+                headers: { 'Content-Type': file.type }
+            });
         } catch (error) {
-            console.error(error)
+            console.error(error);
+            throw error; // Propagate error
         }
-    }
+    };
+    const upload = async (mirrorID: string, file: File, index: number): Promise<void> => {
+        try {
+            // Get Presign URL
+            const presign = await getPresign(mirrorID, file.name);
+    
+            if (!presign) {
+                console.error("Presign URL is undefined.");
+                return;
+            }
+    
+            // Upload to presign URL
+            await uploadToPresign(presign, file, index);
+        } catch (error) {
+            console.error(error);
+            throw error; // Propagate error
+        }
+    };
     const handleUpload = async () => {
         // Remove the upload button
-        updateUpdateBtn(false)
-
+        updateUpdateBtn(false);
+    
         // Generate a UUID
-        const mirrorID = uuidv4()
-
+        const mirrorID = uuidv4();
+    
         // For each file:
-        for (let index = 0; index < props.files.length; index++) {
-            const file: File = props.files[index];
-            // Get Presign URL
-            const presign = await getPresign(mirrorID,file.name)
-
-            // Upload to presign URL
-            uploadToPresign(presign,file, index)
+        const asyncProcesses: Promise<void>[] = [];
+        console.log(new Date().toLocaleTimeString(), "Beginning the upload process...");
+        props.files.forEach((file, index) => {
+            asyncProcesses.push(upload(mirrorID, file, index));
+        });
+    
+        try {
+            // Wait for all promises to finish then update the mirror link
+            console.log(new Date().toLocaleTimeString(), "Waiting for uploads to finish...");
+            await Promise.all(asyncProcesses);
+            updateLink(`https://easymirror.io/mirror/${mirrorID}`);
+            console.log(new Date().toLocaleTimeString(), "Done uploading.");
+        } catch (error) {
+            console.error("Error uploading files:", error);
         }
-    }
+    };
 
     return (
         <div className={styles.ModalContainer}>
@@ -105,7 +127,7 @@ export const UploadModal = (props:ModalProps) => {
                     {!showUploadBtn && (
                     <div className={styles.generatedLinkContainer}>
                         <ContentCopyIcon className={styles.icon} onClick={() => {navigator.clipboard.writeText(link)}}/>
-                        <input disabled placeholder="Generated Link Will Appear Here"/>
+                        <input disabled placeholder="Generated Link Will Appear Here" value={link}/>
                     </div>
                     )}
                 </div>
