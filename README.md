@@ -1,8 +1,14 @@
 # easymirror-frontend
 Source code to EasyMirror's frontend.
 
-# File structure
+## File structure
 - The file structure was inspired by this [WebDevSimplified article](https://blog.webdevsimplified.com/2022-07/react-folder-structure/).
+
+## TODOS
+- [x] The client (Front end) will store refresh token in an httponly cookie and access token in local storage.
+- [ ] Display mirror link after successfully uploading file
+- [ ] Fix Modal background color
+- [ ] Display page for mirror host links
 
 Folder  | Description | Example
 ------------- | ------------- | -------------
