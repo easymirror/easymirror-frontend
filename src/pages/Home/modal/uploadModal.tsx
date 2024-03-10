@@ -48,17 +48,20 @@ export const UploadModal = (props:ModalProps) => {
         }
     }
     const uploadToPresign = async (uri:string ,file: File, index:number) => {
-        try {
-            const formData = new FormData();
-            formData.append("file", file);
-            axios.put(uri, formData, {
-                headers:{"Content-Type": "multipart/form-data"},
+        try {  
+            axios.put(uri, file, {
                 onUploadProgress: (e) => {
                     const percentCompleted = Math.round((e.loaded * 100) / e.total!);
                     progress.set(index, percentCompleted);
                     setProgress(prevState => new Map([...Array.from(prevState), [index, percentCompleted]]));
                     console.log(percentCompleted);
-                }
+                },
+                headers: {'Content-Type': file.type}
+            }).then(async res => {
+                // callback({res, key})
+            })
+            .catch(err => {
+                console.error(err);
             })
         } catch (error) {
             console.error(error)
