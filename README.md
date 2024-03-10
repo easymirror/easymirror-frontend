@@ -7,7 +7,7 @@ Source code to EasyMirror's frontend.
 ## TODOS
 - [x] The client (Front end) will store refresh token in an httponly cookie and access token in local storage.
 - [ ] Display mirror link after successfully uploading file
-- [ ] Fix Modal background color
+- [x] Fix Modal background color
 - [ ] Display page for mirror host links
 
 Folder  | Description | Example
