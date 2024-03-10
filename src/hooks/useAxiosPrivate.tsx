@@ -3,6 +3,13 @@ import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
 
+
+// ErrorResponse represents the response returned when there is an error
+export interface ErrorResponse {
+    success: boolean
+    action: string
+}
+
 const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
     const { auth } = useAuth();
@@ -19,9 +26,19 @@ const useAxiosPrivate = () => {
 
         const responseIntercept = axiosPrivate.interceptors.response.use(
             response => response,
+            // async (response) => {
+            //     if ((response && response.status === 204) && response.headers["Authorization"]) {
+            //         console.log("New JWT token:", response.headers["Authorization"])
+            //         localStorage.setItem("access_token", response.headers["Authorization"])
+            //     }
+
+            //     console.log("It was a successful response! Code:",response.status )
+            //     return response;
+            // },
             async (error) => {
                 const prevRequest = error?.config;
-                if (error?.response?.status === 403 && !prevRequest?.sent) { // TODO: Change this status code to 401
+                const response = error?.response?.data as ErrorResponse
+                if ((error?.response?.status === 401 && !prevRequest?.sent) && response.action === "refresh_token") {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;

@@ -1,21 +1,23 @@
 import axios from "../lib/axios"
 import useAuth from './useAuth';
 
+const REFRESH_PATH = "/api/v1/auth/refresh"
+export interface RefreshResponse {
+    access_token: string
+    success: boolean
+}
+
 const useRefreshToken = () => {
     const { setAuth } = useAuth();
-
     const refresh = async () => {
-        const response = await axios.get('/refresh', {
+        const resp = await axios.get(REFRESH_PATH, {
             withCredentials: true
         });
-
-        // TODO change this to match the response of the API
-        setAuth((prev:any) => {
-            console.log(JSON.stringify(prev));
-            console.log(response.data.accessToken);
-            return { ...prev, accessToken: response.data.accessToken }
+        const response = resp.data as RefreshResponse
+        setAuth((prev) => {
+            return { ...prev, accessToken: response.access_token }
         });
-        return response.data.accessToken;
+        return response.access_token;
     }
     return refresh;
 };
