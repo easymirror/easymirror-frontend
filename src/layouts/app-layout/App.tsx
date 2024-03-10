@@ -57,6 +57,7 @@ function App() {
     if (!localStorage.getItem("access_token")){
       getJWT()
     }
+    setAuth({accessToken: localStorage.getItem("access_token")})
 
   }, [cookies, setAuth]);
 
