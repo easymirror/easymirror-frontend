@@ -42,7 +42,7 @@ function App() {
         let data = response?.data as JWTResponse
         if (!data.success) return
         localStorage.setItem("access_token",data.access_token)
-        setAuth(data.access_token)
+        setAuth({accessToken: data.access_token})
       } catch (error) {
         console.error(error)
       }

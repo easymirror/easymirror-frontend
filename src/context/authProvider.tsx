@@ -1,8 +1,13 @@
 import { createContext, useState, ReactNode, Dispatch, SetStateAction } from "react";
 
+interface Auth {
+  accessToken?: string
+  refreshToken?: string
+}
+
 interface AuthContextType {
-  auth: any; 
-  setAuth: Dispatch<SetStateAction<any>>;
+  auth: Auth; 
+  setAuth: Dispatch<SetStateAction<Auth>>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -15,7 +20,7 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState<Auth>({});
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
