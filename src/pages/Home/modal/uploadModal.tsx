@@ -74,13 +74,13 @@ export const UploadModal = (props:ModalProps) => {
         // Generate a UUID
         const mirrorID = uuidv4()
 
-        // TODO: For each file:
+        // For each file:
         for (let index = 0; index < props.files.length; index++) {
             const file: File = props.files[index];
             // Get Presign URL
             const presign = await getPresign(mirrorID,file.name)
 
-            // TODO: Upload to presign URL
+            // Upload to presign URL
             uploadToPresign(presign,file, index)
         }
     }
