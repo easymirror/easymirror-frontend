@@ -50,7 +50,6 @@ export const MirrorsPage = () => {
                     const axiosError = error as AxiosError;
                     if (axiosError.response?.status === 404) {
                       setError('404 Not Found');
-                      console.log("404 not found")
                     } else {
                       setError(`HTTP Error: ${axiosError.response?.status}`);
                     }
@@ -79,9 +78,9 @@ export const MirrorsPage = () => {
                         {mirrorData.links && Object.keys(mirrorData.links).map((key, index) => (
                         <tr key={index}>
                             <td>{key}</td>
-                            <td>{mirrorData.links[key]}</td>
-                            <td>{mirrorData.upload_date}</td>
-                            <td>{mirrorData.status}</td>
+                            <td>{mirrorData.links[key] ? mirrorData.links[key] : "-"}</td>
+                            <td>{mirrorData.links[key] ? mirrorData.upload_date : "-"}</td>
+                            <td>{mirrorData.links[key] ? mirrorData.status : "-"}</td>
                         </tr>
                         ))}
                         </table>
