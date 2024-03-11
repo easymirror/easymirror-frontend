@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router';
 import { HomePage } from '../../pages/Home';
 import { AccountPage } from '../../pages/Account';
 import { HistoryPage } from '../../pages/History';
+import { NotFoundPage } from '../../pages/NotFound';
 import "./styles.css"
 import { FaqPage } from '../../pages/Faq';
 import {useCookies} from 'react-cookie';
@@ -71,6 +72,7 @@ function App() {
             <Route path="/account"element={<AccountPage/>} />
             <Route path="/history"element={<HistoryPage/>} />
             <Route path="/faq"element={<FaqPage/>} />
+            <Route path="*"element={<NotFoundPage/>} />
           </Routes>
           {cookieOpen && <div className={style.cookie}>
             <h2>We use cookies</h2>
