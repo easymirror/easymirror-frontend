@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import axios from "../../lib/axios";
 import axiosOg, {AxiosError} from "axios";
 import { NotFound } from "./notFound";
-
+import { MirrorItem } from "./mirrorItem";
 const MIRROR_PATH = "/api/v1/mirrors/"
 
 interface MirrorData {
@@ -72,16 +72,11 @@ export const MirrorsPage = () => {
                         <tr>
                             <th>Host</th>
                             <th>Link</th>
-                            <th>Upload Date</th>
+                            <th>Uploaded</th>
                             <th>Status</th>
                         </tr>
-                        {mirrorData.links && Object.keys(mirrorData.links).map((key, index) => (
-                        <tr key={index}>
-                            <td>{key}</td>
-                            <td>{mirrorData.links[key] ? mirrorData.links[key] : "-"}</td>
-                            <td>{mirrorData.links[key] ? mirrorData.upload_date : "-"}</td>
-                            <td>{mirrorData.links[key] ? mirrorData.status : "-"}</td>
-                        </tr>
+                        {mirrorData.links && Object.keys(mirrorData.links).map((host, index) => (
+                            <MirrorItem index={index} host={host} link={mirrorData.links[host]}  {...mirrorData} />
                         ))}
                         </table>
                     </div>
