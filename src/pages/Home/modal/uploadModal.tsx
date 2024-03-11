@@ -82,26 +82,54 @@ export const UploadModal = (props:ModalProps) => {
             throw error; // Propagate error
         }
     };
+    const startMirroring = async (mirrorID: string) => {
+        // Create the payload
+        const data = {
+            "id": mirrorID,
+            "sites": ["pixeldrain", "bunkr"] // TODO let the user choose these
+        }
+
+        // Send a PUT request to start the mirroing process
+        try {
+            await axiosPrivate.put("/api/v1/mirror", data);
+        } catch (error) {
+            console.error(error);
+            throw error; // Propagate error
+        }
+    }
+    const getMirrorID = async () =>{
+        interface mirrorResponse {
+            success: boolean
+            id: string
+        }  
+        try {
+            let resp = await axiosPrivate.get("/api/v1/mirror/new")
+            console.log(resp)
+            const response = resp.data as mirrorResponse
+            return response.id
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const handleUpload = async () => {
         // Remove the upload button
         updateUpdateBtn(false);
     
         // Generate a UUID
-        const mirrorID = uuidv4();
+        const mirrorID = await getMirrorID();
     
         // For each file:
         const asyncProcesses: Promise<void>[] = [];
-        console.log(new Date().toLocaleTimeString(), "Beginning the upload process...");
         props.files.forEach((file, index) => {
             asyncProcesses.push(upload(mirrorID, file, index));
         });
     
         try {
             // Wait for all promises to finish then update the mirror link
-            console.log(new Date().toLocaleTimeString(), "Waiting for uploads to finish...");
             await Promise.all(asyncProcesses);
             updateLink(`https://easymirror.io/mirror/${mirrorID}`);
-            console.log(new Date().toLocaleTimeString(), "Done uploading.");
+            startMirroring(mirrorID)
         } catch (error) {
             console.error("Error uploading files:", error);
         }
