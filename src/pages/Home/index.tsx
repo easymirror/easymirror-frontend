@@ -1,15 +1,12 @@
 import { PageLayout } from "../../layouts/page-layout"
 import style from "./style.module.scss"
 import { useState, useRef } from "react"
-import { convertBytes } from "../../utils/convertBytes"
 import { UploadModal } from "./modal/uploadModal"
-import axios from "axios"
 
 export const HomePage = () => {
     const inputFile = useRef<HTMLInputElement>(null);
     const [files, setFiles] = useState<any> ([]);
     const [showModal, updateShowModal] = useState(false)
-    const [progress, setProgress] = useState(0)
 
     const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const f = e.currentTarget.files
