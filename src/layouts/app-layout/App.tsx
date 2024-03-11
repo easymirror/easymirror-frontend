@@ -6,6 +6,7 @@ import { HomePage } from '../../pages/Home';
 import { AccountPage } from '../../pages/Account';
 import { HistoryPage } from '../../pages/History';
 import { NotFoundPage } from '../../pages/NotFound';
+import { MirrorsPage } from '../../pages/Mirrors';
 import "./styles.css"
 import { FaqPage } from '../../pages/Faq';
 import {useCookies} from 'react-cookie';
@@ -71,6 +72,7 @@ function App() {
             <Route path="/home"element={<HomePage/>} />
             <Route path="/account"element={<AccountPage/>} />
             <Route path="/history"element={<HistoryPage/>} />
+            <Route path="/mirrors/:id"element={<MirrorsPage/>} />
             <Route path="/faq"element={<FaqPage/>} />
             <Route path="*"element={<NotFoundPage/>} />
           </Routes>
