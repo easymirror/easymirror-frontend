@@ -4,6 +4,7 @@
     width: 70%;
     color: white;
     height: 70%;
+    align-items: center;
 }
 .header {
     color: var(--main-purple);
@@ -18,8 +19,8 @@
 }
 
 .backgroundCard {
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     border-radius: 22px;
