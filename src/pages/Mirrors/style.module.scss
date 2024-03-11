@@ -94,5 +94,14 @@
       display: block;
     } 
 
+    .linkContainer {
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+        .copy {
+            cursor: pointer;
+        }
+    }
+
 
 }
