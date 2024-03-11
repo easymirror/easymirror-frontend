@@ -11,7 +11,7 @@ export interface HistoryItem {
     id:             string;
     nickname:       string;
     link:           string;
-    date:           Date;
+    upload_date:    Date;
     duration:       string;
     status:         string;
     additionalInfo: string[];
