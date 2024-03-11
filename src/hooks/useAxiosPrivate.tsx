@@ -2,6 +2,7 @@ import { axiosPrivate } from "../lib/axios";
 import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
+import useNewAuthToken from "./useNewAuthToken";
 
 
 // ErrorResponse represents the response returned when there is an error
@@ -12,6 +13,7 @@ export interface ErrorResponse {
 
 const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
+    const initToken = useNewAuthToken()
     const { auth } = useAuth();
 
     useEffect(() => {
@@ -41,6 +43,11 @@ const useAxiosPrivate = () => {
                 if ((error?.response?.status === 401 && !prevRequest?.sent) && response.action === "refresh_token") {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
+                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                    return axiosPrivate(prevRequest);
+                } else if ((error?.response?.status === 401 && !prevRequest?.sent) && response.action === "new_token"){
+                    prevRequest.sent = true;
+                    const newAccessToken = await initToken();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
                 }
