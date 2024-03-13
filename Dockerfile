@@ -5,10 +5,10 @@ FROM node:latest
 WORKDIR /app
 
 # Copy the package.json and package-lock.json files
-COPY package*.json ./
+COPY package*.json yarn.lock ./
 
 # Install dependencies
-RUN npm install
+RUN yarn install
 
 # Copy everything to the container
 COPY . .
@@ -16,4 +16,4 @@ COPY . .
 # Expose port
 EXPOSE 3000
 
-CMD ["npm", "start" ]
+CMD ["yarn", "start" ]
