@@ -5,6 +5,11 @@ Source code to EasyMirror's frontend.
 ### Dev
 1) Run the [bash file](/build/dev_build.sh) found in [build directory](/build/). This ensures the `.env` file is also passed in.
 2) For a manual build, run: `$ docker build -t easymirror-platform-frontend:latest .`
+
+### Production
+1) Run the [build bash file](/build/prod_build.sh) found in [build directory](/build/). This ensures the `.env` file is also passed in.
+2) For a manual build, run: `$ docker build --file Dockerfile.prod -t easymirror-platform-frontend:latest .`
+
 ## File structure
 - The file structure was inspired by this [WebDevSimplified article](https://blog.webdevsimplified.com/2022-07/react-folder-structure/).
 
