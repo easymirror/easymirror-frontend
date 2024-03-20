@@ -72,7 +72,7 @@ function App() {
             <Route path="/home"element={<HomePage/>} />
             <Route path="/account"element={<AccountPage/>} />
             <Route path="/history"element={<HistoryPage/>} />
-            <Route path="/mirrors/:id"element={<MirrorsPage/>} />
+            <Route path="/mirror/:id"element={<MirrorsPage/>} />
             <Route path="/faq"element={<FaqPage/>} />
             <Route path="*"element={<NotFoundPage/>} />
           </Routes>

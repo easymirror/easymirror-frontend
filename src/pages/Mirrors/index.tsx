@@ -7,7 +7,7 @@ import axios from "../../lib/axios";
 import axiosOg, {AxiosError} from "axios";
 import { NotFound } from "./notFound";
 import { MirrorItem } from "./mirrorItem";
-const MIRROR_PATH = "/api/v1/mirrors/"
+const MIRROR_PATH = "/api/v1/mirror/"
 
 interface MirrorData {
     success: boolean

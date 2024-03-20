@@ -11,7 +11,7 @@ interface props {
     item: HistoryItem
 }
 
-const LINK_BASE = "https://easymirror.io/mirrors/"
+const LINK_BASE = "https://easymirror.io/mirror/"
 
 
 export const HistoryItemData = (props:props) =>{
