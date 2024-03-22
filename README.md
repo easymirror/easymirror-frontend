@@ -30,3 +30,4 @@ Folder  | Description | Example
 - [x] Display page for mirror host links
 - [ ] Functionality to delete history
 - [ ] Easier to way get domain name for dev/prod
+- [ ] Mobile support (CSS)
