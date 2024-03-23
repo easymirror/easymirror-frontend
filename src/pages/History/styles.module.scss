@@ -1,0 +1,85 @@
+.historyPage {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 70%;
+}
+.header {
+    color: var(--main-purple);
+    text-shadow: 0px 4px 123.6px var(--main-purple);
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+}
+.backgroundCard {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    border: 0px solid #000;
+    background: linear-gradient(180deg, rgba(144, 84, 255, 0.60) -594.89%, rgba(144, 84, 255, 0.00) 194.9%);
+}
+
+.accountDetailContainer {
+    display: flex;
+    color: var(--white);
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    gap: 50px;
+    margin-left: 50px;
+
+    .detailValue {
+        font-family: "Inter-Light", Helvetica;
+        font-weight: 300;
+        opacity: 0.16;
+    }
+}
+
+.statusBox {
+    display: flex;
+    justify-content: center;
+    width: 79px;
+    height: 18px;
+    border-radius: 6px;
+    color: var(--white);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}    
+
+.complete {
+    background-color: var(--python-green);
+}
+
+.failed {
+    background-color: var(--red);
+}
+
+.inProgress {
+    background-color: var(--shark-blue);
+}
+
+.itemActions {
+    display: flex;
+    gap: 10px;
+}
+
+.linkContainer {
+    display: flex;
+    gap: 15px;
+
+    .copy {
+        cursor: pointer;
+    }
+}

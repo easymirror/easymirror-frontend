@@ -1,0 +1,60 @@
+.faqPage {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    color: white;
+    height: 70%;
+    align-items: center;
+}
+.header {
+    color: var(--main-purple);
+    text-shadow: 0px 4px 123.6px var(--main-purple);
+    font-family: Inter;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+}
+
+.backgroundCard {
+    max-height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
+    border: 0px solid #000;
+    background: linear-gradient(180deg, rgba(144, 84, 255, 0.60) -594.89%, rgba(144, 84, 255, 0.00) 194.9%);
+}
+
+.items {
+    margin: 20px auto;
+}
+
+.slideDropdown {
+    position: relative;
+    width: 400px;
+    margin: 20px 0;
+
+    .active {
+        display: block;
+        max-height: 1000px; 
+    }
+}
+  
+.question {
+    padding: 10px;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.anwser {
+    padding: 10px;
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    white-space: pre-line;
+}

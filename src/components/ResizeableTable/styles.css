@@ -1,0 +1,108 @@
+.container {
+  overflow: scroll;
+
+th {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+td {
+  color: #FFF;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+th, td {
+  border-bottom: 1px solid rgba(144, 84, 255, 0.12);
+}
+
+
+    
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    display: grid;
+  } 
+
+  .num_8{
+    grid-template-columns:
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(25px, 1fr);
+  }
+
+  .num_3{
+    grid-template-columns:
+    minmax(125px, 1fr)
+    minmax(125px, 1fr)
+    minmax(125px, 1fr);
+  }
+  
+  table thead,
+  table tbody,
+  table tr {
+    display: contents;
+  }  
+  
+  table th {
+    position: relative;
+    font-size: 18px;
+  }
+  
+  table th,
+  table td {
+    text-align: left;
+    padding: 16px 20px;
+    min-width: 100px;
+  }
+  
+  table th span,
+  table td span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+  } 
+  
+  .resize-handle {
+    display: block;
+    position: absolute;
+    cursor: col-resize;
+    width: 7px;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    border-right: 2px solid transparent;
+  }
+  
+  .resize-handle:hover {
+    border-color: #ccc;
+  }
+  
+  .resize-handle.active {
+    border-color: #517ea5;
+  }
+  
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
